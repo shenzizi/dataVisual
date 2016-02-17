@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="600" height="600" style="border:1px solid orange"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      // draw blue rectangle
+      context.beginPath();
+      context.rect(200, 20, 100, 100);
+      context.fillStyle = 'blue';
+      context.fill();
+
+      // draw transparent red circle
+      context.globalAlpha = 0.5;
+      context.beginPath();
+      context.arc(320, 120, 60, 0, 2 * Math.PI, false);
+      context.fillStyle = 'red';
+      context.fill();
+
+      context.globalAlpha = 0.3;
+      context.beginPath();
+      context.arc(100, 120, 30, 0, 2 * Math.PI, false);
+      context.fillStyle = 'yellow';
+      context.fill();
+
+      function findPos(obj) {
+    var curleft = 0, curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return { x: curleft, y: curtop };
+    }
+    return undefined;
+  }
+    $('#myCanvas').off('click').on('click', function(e) {
+        var pos = findPos(this);
+        var clickedx= e.pageX - pos.x;
+        var clickedy = e.pageY - pos.y;
+        console.log(x,y)
+        //for (var i = 0; i < 5; i++) {
+                        //console.log(circlesg.length)
+                        var x =  clickedx-320;
+                        var y =  clickedy-120;
+                        var dist = Math.sqrt(y*y + x*x);
+                if (dist<60) {
+                 alert("hi")
+                }
+       // }
+    });
+    </script>
+  </body>
+</html>      
