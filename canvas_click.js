@@ -1,4 +1,4 @@
-function processdata_click(data,button){
+function processdata_click(data){
   function processdata(){
    var dataset=[],dataname=[],radiuses=[]; 
    for (var i=0;i<data.data.docs.length;i++){ 
@@ -7,55 +7,54 @@ function processdata_click(data,button){
     obj.size=data.data.docs[i].occs
     dataset.push(obj)
   }
-
-     // sort name by size
-       /*function sortByKey(array, key) {
-          return array.sort(function(a, b) {
-            var x = a[key]; var y = b[key];
-            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-          });
-}*/
-     //dataset = sortByKey(dataset, 'size').reverse();
      //retrieve the object key&values,save name as an array and size as another array
      for (var i=0;i<dataset.length;i++){
       var name=dataset[i].name,size=dataset[i].size
       dataname.push(name)
       radiuses.push(size)
     }
-    console.log(dataname,radiuses)
+   // console.log(dataname,radiuses)
     return [dataname,radiuses]
   }
-     //$(button).click(function (e) {
       var name=processdata(data)[0],
       size=processdata(data)[1]
-      window.onload = draw(name,size);
-     //});  
+      window.onload = draw(name,size,data);
+      var c = $('#canvas');
+      var ct = c.get(0).getContext('2d');
+      var container = $(c).parent().parent().parent();//var container=$(divid)
+      // handle the response evnet
+      $(window).resize( function(){ 
+        c.attr('width', $(container).width() ); //max width
+        c.attr('height', $(container).height() );//max height
+        processdata_click(data) 
+    }); 
 };
 
-    /*processdata_click(top10_data,'#top10')
-    processdata_click(top15_data,'#top15')
-    processdata_click(top20_data,'#top20')
-    processdata_click(top28_data,'#top28')*/
 
+   $('#top10').click(function(){
+    processdata_click(top10_data)
+   })
+   $('#top15').click(function(){
+    processdata_click(top15_data)
+   })
+   $('#top20').click(function(){
+    processdata_click(top20_data)
+   })
+   $('#top28').click(function(){
+     processdata_click(top28_data)
+   })
 
     //Get the canvas & context 
-    var c = $('#canvas');
+    /*var c = $('#canvas');
     var ct = c.get(0).getContext('2d');
     var container = $(c).parent()
     var container = $(c).parent().parent().parent();//var container=$(divid)
-    /*$(window).resize( respondCanvas );
-
-    function respondCanvas(){ 
-        c.attr('width', $(container).width() ); //max width
-        c.attr('height', $(container).height() ); //max height
-    }
-    //Initial call 
-    respondCanvas();*/
     $(window).resize( function(){ 
         c.attr('width', $(container).width() ); //max width
         c.attr('height', $(container).height() );//max height
-        processdata_click(top20_data,'#top20') 
-      }); 
+        var dataname=c.attr('class')
+        processdata_click(top20_data) 
+      });*/
     
     //});//document.ready
 
@@ -253,7 +252,7 @@ Packer.prototype = {
         while (step > limit)
         {
           var placement = this.compute.call (this, surface);
-          console.log ("placed",placement.length,"out of",this.circles.length,"for surface", surface);
+          //console.log ("placed",placement.length,"out of",this.circles.length,"for surface", surface);
           if (placement.length != this.circles.length)
           {
             surface += step;
@@ -276,27 +275,22 @@ Packer.prototype = {
 
 var fillcolor=["#1f77b4","#aec7e8"," #ff7f0e","#ffbb78","#2ca02c","#98df8a"," #d62728"," #ff9896","#9467bd","#c5b0d5","#8c564b","#c49c94","#e377c2","#f7b6d2","#7f7f7f", "#637939","#bcbd22","#dbdb8d","#17becf","#9edae5","#393b79","#c7c7c7","#8c6d31", "#ad494a"," #7b4173","#ce6dbd"," #cedb9c","#9c9ede","#e7ba52","#ad494a","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue"]
 
-function draw_result (packer,opacity)
+function draw_result (packer,data)
 {   
   var xyposition=[];
   var topleftposition=[];
   var circlesg=[];
   function draw_circle(circle)
   {   
-    if (opacity<1){
-      console.log('opacity<1')
-      ctx.globalAlpha=0.5;
-    }
     var circlesgobj={}; 
     ctx.font = "10px Arial";
         //ctx.globalAlpha=0.5;
         ctx.beginPath();
-        ctx.arc((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my, circle.r*zoom, 0, 2*Math.PI);
+        ctx.arc((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my, circle.r*zoom, 0, 2*Math.PI); 
         xyposition.push((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my);      
         ctx.fillStyle=fillcolor[i];  
         ctx.fill();
         ctx.fillStyle="black";
-        //ctx.fillText(dataname[i],(circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my)
         circlesgobj.left=(circle.c.x+dx)*zoom+mx- circle.r*zoom;
         circlesgobj.right=(circle.c.x+dx)*zoom+mx+ circle.r*zoom;
         circlesgobj.top=(circle.c.y+dy)*zoom+my- circle.r*zoom;
@@ -305,7 +299,6 @@ function draw_result (packer,opacity)
         circlesgobj.y=Math.floor((circle.c.y+dy)*zoom+my);
         circlesgobj.r=Math.floor(circle.r*zoom)
         topleftposition.push(circlesgobj.left+33,circlesgobj.top+20)
-        //circlesgobj.name=dataname[i];
         circlesg.push(circlesgobj)               
       }
 
@@ -341,17 +334,9 @@ function draw_result (packer,opacity)
     ctx.closePath();
     ctx.stroke();
 
-    //filltext, line break
-    /*for (var i=0;i<dataname.length;i++){
-      var datanamei = dataname[i].split(' ')
-      for (var j = 0; j<datanamei.length; j++){
-        ctx.fillText(datanamei[j],xyposition[i*2],xyposition[i*2+1]+(j*15))
-      }
-    }
-    console.log(circlesg) 
-    console.log(xyposition)*/
 
    function mapping_r_name(data){
+     //console.log(data);
      var circle_r=_.pluck(circlesg,"r"); 
      var circle_x=_.pluck(circlesg,"x"); 
      var circle_y=_.pluck(circlesg,"y");
@@ -395,15 +380,14 @@ function draw_result (packer,opacity)
      })
     })
     var name_order=_.pluck(name_result,"name")
-    console.log(name_order,dataset_order)
+    //console.log(name_order,dataset_order)
     return name_order
   }; 
    
-   var name_order=mapping_r_name(top20_data);
+   var name_order=mapping_r_name(data);
 
   //filltext, line break
     for (var i=0;i<name_order.length;i++){
-      circlesg[i].name=name_order[i]
       var datanamei = name_order[i].split(' ')
       for (var j = 0; j<datanamei.length; j++){
         if (circlesg[i].r<80 && datanamei.length>2){
@@ -413,93 +397,28 @@ function draw_result (packer,opacity)
         }
       }
     }
-    console.log(circlesg) 
-    console.log(xyposition)
-   
-   function findPos(obj) {
-    var curleft = 0, curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return { x: curleft, y: curtop };
-    }
-    return undefined;
-  }
-    $('#canvas').off('click').on('click', function(e) {
-        var pos = findPos(this);
-        var clickedX = e.pageX - pos.x;
-        var clickedY = e.pageY - pos.y;
-        console.log(clickedX,clickedY)
-        for (var i = 0; i < circlesg.length; i++) {
-                        console.log(circlesg.length)
-                        var x =  clickedX -circlesg[i].x;
-                        var y =  clickedY -circlesg[i].y;
-                        var dist = Math.sqrt(y*y + x*x);
-                if (dist<circlesg[i].r) {
-                 alert(circlesg[i].name)
-                 //console.log(circlesg[i].r,circlesg[i].x,circlesg[i].y)
-                 ctx.globalAlpha=0.5;
-                 ctx.fillStyle='white';
-                 ctx.fill();
-                 ctx.globalAlpha=1;
-                 ctx.beginPath();
-                 ctx.arc(circlesg[i].x,circlesg[i].y,circlesg[i].r, 0, 2*Math.PI);
-                 ctx.fillStyle='lightblue';  
-                 ctx.fill();
-                }else{
-                  alert("not in the element")
-                }
-        }
-    });
-  $('#canvas').mouseover(function(e) {
-    //alert("hi")
-        var pos = findPos(this);
-        var clickedX = e.pageX - pos.x;
-        var clickedY = e.pageY - pos.y;
-        //console.log(clickedX,clickedY)
-        for (var i = 0; i < circlesg.length; i++) {
-                        console.log(circlesg.length)
-                        var x =  clickedX -circlesg[i].x;
-                        var y =  clickedY -circlesg[i].y;
-                        var dist = Math.sqrt(y*y + x*x);
-                if (dist<circlesg[i].r) {
-                  console.log(circlesg[i].name)
-                  //$(this).css('cursor','pointer')
-                //}else{
-                 //$(this).css('cursor','default')
-                }
-        }
-    }); 
-  //return circlesg;
+    //console.log(circlesg) 
+    //console.log(xyposition)
+
    /*$('#canvas').click(function (e) {
-    //var container_height=$(".test").outerHeight()-$('#canvas').height(); 
     var clickedX = e.pageX - this.offsetLeft;
     var clickedY = e.pageY - this.offsetTop;
     console.log(clickedX,clickedY)
+      //console.log(circlesg)
       for (var i = 0; i < circlesg.length; i++) {
-            console.log(circlesg.length)
-            var x =  clickedX -circlesg[i].x;
-            var y =  clickedY -circlesg[i].y;
-            var dist = Math.sqrt(y*y + x*x);
-        if (dist<circlesg[i].r) {
+        if (clickedX < circlesg[i].right && clickedX > circlesg[i].left && clickedY > circlesg[i].top && clickedY < circlesg[i].bottom) {
          alert(circlesg[i].name)
-        }
-      }
-      //for (var i = 0; i < circlesg.length; i++) {
-        //if (clickedX < circlesg[i].right && clickedX > circlesg[i].left && clickedY > circlesg[i].top && clickedY < circlesg[i].bottom) {
-         //alert(circlesg[i].name)
-       //}
-     //}
+       }
+     }
    });*/
  }
 
- function draw (name,size){
-  console.log(name,size)
+ function draw (name,size,data){
+  //console.log(name,size)
   dataname=name;
   radiuses= size;
-  console.log(radiuses)
+  data=data; 
+  //console.log(radiuses)
   var circles=radiuses.length;
   var min_r=Math.min(...radiuses);
   var max_r=Math.max(...radiuses); 
@@ -514,11 +433,10 @@ function draw_result (packer,opacity)
   var container = $(c).parent()
   var rwdwidth=$(container).width();
   var rwdheight=$(container).height();
-  console.log(container,rwdwidth,rwdheight)
-    //var ratio=rwdwidth/rwdheight<1.5?rwdwidth/rwdheight:1.5;
-    ratio=rwdwidth/rwdheight; 
-    console.log(ratio)
-    var packer = new Packer (radiuses, ratio);
-    draw_result(packer,1);  
+  //console.log(container,rwdwidth,rwdheight)
+  ratio=rwdwidth/rwdheight; 
+  //console.log(ratio)
+  var packer = new Packer (radiuses, ratio);
+  draw_result(packer,data);  
   }
-  processdata_click(top20_data,'#top20')
+  processdata_click(top20_data)
