@@ -53,8 +53,13 @@ function viewing_clickbutton(){
 function viewingbubble(dataname1,dataname2){
   // Fake JSON data for viewingbubble,read from data.js
   d3.select("#viewingbubble").select("svg").remove();
-  var width = 550,
-      height= 550
+  if (bgwidth<768){
+      var width = 280,
+          height= 300
+  }else{
+    var width = 550,
+        height= 550
+  }
   var color = d3.scale.ordinal()
     .range(["#996bc3", "#386ac5", "#5dc74c", "#e9c71f", "#ea762f", "#f495a3"]);
 
@@ -109,6 +114,7 @@ function viewingbubble(dataname1,dataname2){
       .ease('elastic')
       .attr("transform", "translate("+width/30+"," + height / 40 + ")")
       .attr("r", function(d) { return d.r; });    
+
 } 
 //chart02__piechart--retrieve data from ajax request
 function piechart(dataset){
@@ -121,9 +127,15 @@ if (dataset=="hardcode_pie_barline_data_oneweek"){
   var data=hardcode_pie_barline_data_oneyear
 }
 var data=dataset
-var width = 360,
-    height = 300,
-    radius = Math.min(width, height) / 2;
+if (bgwidth<768){
+  var width=280,
+      height=280;
+}else{
+  var width = 360,
+      height = 300
+}
+
+  var radius = Math.min(width, height) / 2;
 
 var color = d3.scale.ordinal()
     .range(["#996bc3", "#386ac5", "#5dc74c", "#e9c71f", "#ea762f", "#f495a3"]);
@@ -174,9 +186,16 @@ function type(d) {
 function barlinechart01(data){
 d3.select("#barlinechart01").select("svg").remove(); 
 var data=data
-var margin = {top: 20, right: 50, bottom: 30, left: 60},
-    width = 40 - margin.left - margin.right,
+
+if (bgwidth<768){
+var margin = {top: 20, right: 10, bottom: 30, left: 10},
+    width = 300 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+  }else{
+var margin = {top: 20, right: 50, bottom: 30, left: 50},
+    width = 400 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
+  }
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -292,9 +311,16 @@ if (pndataset=="hardcode_bardata_oneweek"){
 }
 var bardata=pndataset;
 
+if (bgwidth<768){
+var margin = {top: 20, right: 10, bottom: 30, left: 10},
+    width = 280 - margin.left - margin.right,
+    height = 280 - margin.top - margin.bottom;
+  }else{
 var margin = {top: 30, right: 20, bottom: 10, left: 50},
-    width = 360 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    width = 400 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+  }
 
 var x = d3.scale.linear()
     .range([0, width]);
@@ -355,12 +381,12 @@ function type(d) {
 
   //d3 circosJS
   function circosjs(){
-  var circos = new circosJS({
+     var circos = new circosJS({
       container: '#chart',
       width: 420,
       height: 420,
-  });
-
+    });
+ 
   circos
     .layout(
         {
@@ -454,7 +480,7 @@ function type(d) {
 
     svg.append("g")
      .attr("class", "legendLinear")
-     .attr("transform", "translate(30,30)")
+     .attr("transform", "translate(20,30)")
      .append("text")
      .text("C.P.M")
      .attr("y",-10)

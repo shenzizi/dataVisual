@@ -5,234 +5,8 @@
   <meta name="viewport" content="width=device-width; initial-scale=1.0" >
 	<title>Data Visual</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="fontstyle.css" />
-   <!--<link rel='stylesheet' type="text/css" href='style.css' />-->
-  <style>
-  #bg{
-      position: absolute;
-      z-index: 1;
-    }
-  #logo,#circleAnimation{
-      position: absolute;
-      z-index: 2;
-    }
-  #part1,#part3{
-    background-color: black;
-  }
-  #part3 > .row > .intro{
-   background-color:indigo;
-  }
-  #part2 > .row > .intro{
-   background-color:#3c6a72;
-  }
-
-  /*#part1::before, #part2::before,#part3::before,#part4::before{
-    display: block;
-    content: "";
-    width: 5%;
-    height: 5px;
-    content: url('cutecircle.png');
-    margin-left:45%;
-    margin-top:-1.5%;*/
-   /*content: '';
-   display: inline-block;
-   width: 80px;
-   height: 80px;
-   margin-left:45%;
-   margin-top:-1.5%;
-   -moz-border-radius: 80px;
-   -webkit-border-radius: 80px;
-   border-radius: 80px;
-   background-color: #69b6d5;*/
-  /*}*/
-  #part2,#part4{
-    background-color: lavender;
-    border:black;
-  }
-  #part2,#part3,#part4{
-    margin-top: 65px;
-  }
-  .pagepart{
-    position: absolute;
-    width:100%;
-    padding-bottom: 5%;
-  }
-  #footer{
-    background-color: grey;
-    height:200px;
-  }
-  div.tooltip {   
-    position: absolute;           
-    text-align: center;           
-    width: 70px;                  
-    height: 40px;                 
-    padding: 2px;             
-    font: 12px sans-serif;        
-    background: lightsteelblue;   
-    border: 0px;      
-    border-radius: 8px;           
-    pointer-events: none;         
-  } 
-  text{
-    font-weight: bold;
-  }
-  h3{
-    text-align: center;
-    font-size:1.5em;
-    color:white;
-    font-family: 'cwTeXMing', serif;
-    font-family: Georgia, Times, 'Times New Roman', serif;
-
-  }
-  h2{
-    font-family: 'cwTeXMing', serif;
-    color:white;
-  }
-  h1{
-    color:white;
-    font-weight: bold;
-  }
-  /*#heatmapcircle{
-    margin-top: 1200px;
-    margin-bottom: 300px;
-  }
-  #heatmaplegend{
-    position: absolute;
-    top:1300px;
-  }
-  #heatmaplegend01{
-    position: absolute;
-    top:1300px;
-    left:100px;
-  }*/
-  /*#circoslegend{
-    position: absolute;
-    z-index:2;
-    width: 15%;
-    left:80%;
-    top:15%; 
-  }*/
-  #bubblechart{
-      margin-top:100px;
-  }
-  .arc text {
-  font: 10px sans-serif;
-  text-anchor: middle;
-  }
-
-.arc path {
-  stroke: #fff;
-}
-/*.bar.positive {
-  fill: steelblue;
-}
-
-.bar.negative {
-  opacity:.5 !important;
-}*/
-.negative{
-    fill:grey !important;
-    opacity:.3;
-  }
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke:white;
-  shape-rendering: crispEdges;
-}
-
-.axis {
-  font: 10px sans-serif;
-}
-
-/*#legend{
-  position: absolute;
-  top:0;
-  left:0;
-}*/
-.label{
-  font-size:1em;
-}
-/*#viewingbubble{
-  position: absolute;
-  top:0px;
-  left:0px;
-  text-align: center;
-}*/
-/*#barlinechart01{
-  position:absolute;
-  top:550px;
-  left:0px;
-  text-align: center;
-}
-#piechart{
-  position: absolute;
-  top:500px;
-  left:500px;
-  text-align: center;
-}
-
-#nbar{
-  position: absolute;
-  top:500px;
-  left:850px;
-  text-align: center;
-}*/
-.choosedate{
-  padding:10px
-}
-/*#viewingtext{
-  position: absolute;
-  top:-15px;
-  left:20px;
-}*/
-
-.animation-element.slide-left {
-  opacity: 0;
-  -moz-transition: all 500ms linear;
-  -webkit-transition: all 500ms linear;
-  -o-transition: all 500ms linear;
-  transition: all 500ms linear;
-  -moz-transform: translate3d(-100px, 0px, 0px);
-  -webkit-transform: translate3d(-100px, 0px, 0px);
-  -o-transform: translate(-100px, 0px);
-  -ms-transform: translate(-100px, 0px);
-  transform: translate3d(-100px, 0px, 0px);
-  }
- .animation-element.slide-left.in-view {
-  opacity: 1;
-  -moz-transform: translate3d(0px, 0px, 0px);
-  -webkit-transform: translate3d(0px, 0px, 0px);
-  -o-transform: translate(0px, 0px);
-  -ms-transform: translate(0px, 0px);
-  transform: translate3d(0px, 0px, 0px);
-}
-.intro{
-  padding-top: 50px;
-  padding-left:5%;
-}
-.topb{
-  margin-top: 5%;
-  margin-left: 5%;
-}
-
-.navbar-fixed-top{
-  height:70px;
-}
-.navbar-brand,.nav li{
-  font-size: 20px;
-  padding-top: 5px;
-}
-.navbar-brand{
-  padding-top: 20px;
-}
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/nicgirault/circosJS/master/dist/colorBrewer.css">
+  <link rel="stylesheet" type="text/css" href="datavisual.css" />
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -254,11 +28,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span> 
                 </button>
-                <a class="navbar-brand" href="#">趣●資料</a>
+                <a class="navbar-brand" href="#" style="color:white">趣●資料</a>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
                     <li><a href="#viewing">政論收視率</a></li>
                     <li><a href="#viewing2">政論收視率貳</a></li>
                     <li><a href="#hotword">熱門關鍵字</a></li>
@@ -272,7 +45,14 @@
     <div class="row">
       <div class="col-md-12">
         <img id="bg" src="#"/>
-        <div id="circleAnimation"><h2></h2></div>
+        <div id="circleAnimation"></div>
+        <div id="narrative">
+          <h2>Telling stories with DATA</h2>
+          <div id="narrative_text">
+            <p>Go deeper into a topic and offer a new perspective!</p>
+            <p>Data visualization help you see something familiar in a completely new way.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -283,17 +63,19 @@
   <div class='container-fluid' id="part1" style="margin-top:1000px">
     <div class="row">
       <div class="col-md-12 col-xs-12 intro animation-element slide-left" style="background-color:maroon">
-        <h1>紅●政論</h1>
-        <h2>想知道現在最夯的政論節目是哪些嗎?</h2>
-        <h2>快來看看政論聲量多大,廣告價衝多高</h2>
-        <p style="color:white">請點選日期,一覽過去一周,一個月,一年榮登收視率前120名的政論節目</p>
-        <p style="color:white">收視率,10秒廣告價,C.P.M從潤利公司網站蒐集得來,聲量百分筆與聲量正負評筆數從搜尋引擎得來</p>
-        <p style="color:white"><a a target="_blank" href="http://www1.xkm.com.tw/HTML/tw/hr/ht_top.asp">資料來源</a></p>
+        <div class="paddingfordec">
+          <h1>紅●政論</h1>
+          <h2>想知道現在最夯的政論節目是哪些嗎?</h2>
+          <h2>快來看看政論聲量多大,廣告價衝多高</h2>
+          <p>請點選日期,一覽過去一周,一個月,一年榮登收視率前120名的政論節目</p>
+          <p>收視率,10秒廣告價,C.P.M從潤利公司網站蒐集得來,聲量百分筆與聲量正負評筆數從搜尋引擎得來</p>
+          <p><a a target="_blank" href="http://www1.xkm.com.tw/HTML/tw/hr/ht_top.asp">資料來源</a></p>
+        </div>
       </div>
     </div>
     <div class="row">
-        <div class="col-md-3 col-xs-12 dropdown" style="border:1px solid white">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">選擇日期
+        <div class="col-md-3 col-xs-12 dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="datebutton">選擇日期
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu choosedate">
@@ -302,19 +84,18 @@
               <li id="oneyear"><a href="#1">過去一年</a></li>
           </ul>
         </div>
-        <!--<div class="col-md-1 col-xs-12" id="legend"></div>-->
-        <div class="col-md-8 col-xs-12" style="border:1px solid green;">
+        <div class="col-md-8 col-xs-12">
           <div class="col-md-2 col-xs-12" id="legend"></div>
-          <div class="col-md-6 col-xs-12" style="border:1px solid green;">
+          <div class="col-md-6 col-xs-12">
             <h3 id="viewingtext">潤利收視率(%)</h3>
-            <div style="border:1px solid green;" id="viewingbubble"></div>
+            <div id="viewingbubble"></div>
           </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-xs-12" id="barlinechart01" style="border:1px solid orange"><h3>10秒廣告價與C.P.M</h3></div>
-        <div class="col-md-4 col-xs-12" id="piechart" style="border:1px solid orange"><h3>聲量%</h3></div>
-        <div class="col-md-4 col-xs-12" id="nbar" style="border:1px solid orange"><h3>聲量正負評筆數</h3></div>
+        <div class="col-md-4 col-xs-12" id="barlinechart01"><h3>10秒廣告價與C.P.M</h3></div>
+        <div class="col-md-4 col-xs-12" id="piechart"><h3>聲量(%)</h3></div>
+        <div class="col-md-4 col-xs-12" id="nbar"><h3>聲量正負評筆數</h3></div>
         <div class="clearfix"></div>
     </div>
   </div>
@@ -326,9 +107,13 @@
   <div class='container-fluid' id="part2">
     <div class="row">
       <div class="col-md-12 intro animation-element slide-left">
+        <div class="paddingfordec">
         <h1>政論●番外</h1>
         <h2>政論收視率番外篇</h2>
-        <h2>收視率與C.P.M關係圖</h2>
+        <p>照過來,看看其他收視率與C.P.M之關係,如何用其他圖表呈現</p>
+        <p>圓形heap map最外圍顯示節目名稱,次圓顯示收視率,最小的圓顯示C.P.M,顏色越深,代表值越大<p>
+        <p>底下的直條圖為2015/12/22-2015/12/25四天所蒐集到的各節目之收視率與C.P.M資料</p>
+      </div>
       </div>
     </div>
     <div class="row">
@@ -340,8 +125,8 @@
           <div id="heatmaplegend01"></div>
         </div>
        </div>
-       <div class="col-md-8" style="border:1px solid orange">          
-          <svg id="chart" style='display: block; margin: auto;border:1px solid green'></svg>     
+       <div class="col-md-8">          
+          <svg id="chart" style="display: block; margin: auto 0"></svg>     
        </div>
      <div class="row">
       <div class="col-md-12">
@@ -356,11 +141,13 @@
   <div class='container-fluid' id="part3">
     <div class="row">
       <div class="col-md-12 intro animation-element slide-left" id="intro_viewing">
-        <!--<div class=">-->
+        <div class="paddingfordec">
           <h1>熱門●關鍵字</h1>
           <h2>還在怕自己lag,沒跟上朋友的節奏嗎?</h2>
           <h2>關鍵字一把抓,告訴你top10-top28熱門詞組</h2>
-        <!--</div-->
+          <p>最近有什麼新消息?透過關鍵字來推敲大家關注的內容</p>
+          <p>可點選top10-top28的按鈕,圓圈的大小代表關鍵字的熱門程度,看清楚了嗎?不要再lag囉!</p>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -382,7 +169,18 @@
  </section>
 
 <section id="viewing_all">
-  <div class='container-fluid' id="part4" id="viewing_all">part3_table
+  <div class='container-fluid' id="part4" id="viewing_all">
+    <div class="row">
+       <div class="col-md-12 intro">
+        <div class="paddingfordec">
+        <h1>夯●節目</h1>
+        <h2>回家後就打開電視機嗎?有沒有最夯節目的八卦?</h2>
+        <h2>要當個盡責的couch potato,先了解大家都沉浸在哪些節目裡</h2>
+        <p></p>
+        <p>以下圖表詳列收視率前20名的節目各項資訊</p>
+        </div>        
+      </div>
+    </div>
     <div class="row">
        <div class="col-md-12">
          <div id="bubblechart" style="min-width: 310px; height: 500px;"></div>
@@ -413,30 +211,18 @@
   <div class="container-fluid" id="footer">
     <div class="row">
       <div class="col-md-offset-5">
-        <h3>Made by Zihyu Shen,2016</h3> 
+        <h3 id="footernote">Created by Zihyu Shen,2016</h3> 
       </div>
     </div>
   </div>
 
-
- <script src="response.js"></script>
+  <script src="datavisual.js" type="text/javascript"></script>
+  <script src="response.js"></script>
   <script src="canvas_click.js"></script>
   <script src="data.js" type="text/javascript"></script>
   <script src="plots_charts.js" type="text/javascript"></script>
-  <script>
-  /* function layoutHandler(){
-	var styleLink = document.getElementById("pagestyle");
-	if(window.innerWidth < 900){
-		styleLink.setAttribute("href", "mobile.css");
-	} else if(window.innerWidth < 1200){
-		styleLink.setAttribute("href", "medium.css");
-	} else {
-	    styleLink.setAttribute("href", "large.css");
-	}
-   }
-   window.onresize = layoutHandler;
 
-   layoutHandler();*/
+  <script>
    var bgwidth=$(window).width(), 
        bgheight=$(window).height(),
        bgratio=bgwidth/bgheight;
@@ -444,185 +230,28 @@
    function layout(){
    	console.log(bgratio);  
    	if (bgratio<1){
-   		$('#bg').attr("src","r3_sm.jpg")
+   		$('#bg').attr("src","datavisual_re_sm.jpg")
    	}else{
-        $('#bg').attr("src","r3_lg.jpg")
+        $('#bg').attr("src","datavisual_re.jpg")
    	}
    	$('#bg').css('width',bgwidth);
    	$('#bg').css('height',bgheight);
     $('#part1').css('margin-top',bgheight+70)
     if (bgwidth>767){
       $(".navbar-inverse").addClass("navbar-fixed-top")
+    }else{
+      $(".axis").css("fill","black")
     }
-    //$('#part2').css('margin-top',bgheight+part1height+50)
-    //$('#part3').css('margin-top',bgheight*3)
-    //$('#part1').css('height',bgheight);
-    //$('#part1').css('top','1400px')
    }
 
-   //generate the cirlces for circle animation   
-     function circlegenerator(){ 
-       var dataset=[]; 
-          for (var i = 0; i < 65; i++) { 
-            var obj = new Object;     
-            var colors=["#fde10b","#8ab839","#99e2d3","#a23169","#ef3678","#ae6afc"]; 
-            var transparent=[1,0.5,0.8];  
-            //var bcr = Math.random()*(285-180) + 180;
-            if (bgwidth<768){
-              var bcr = Math.random()*(100-50) + 50;
-              var r = Math.random()*(10-5) + 5;  
-              var angle = Math.random()*(300-100) + 100;  
-            }else{
-              var bcr = Math.random()*(250-100) + 100;
-              var r = Math.random()*(18-5) + 5;  
-              var angle = Math.random()*(300-100) + 100; 
-            }                    
-            var color = colors[Math.floor(Math.random() * colors.length)];
-            var opacity = transparent[Math.floor(Math.random() * colors.length)];
-            obj.bcr=bcr; 
-            obj.r=r; 
-            obj.angle=angle; 
-            obj.color=color;
-            obj.opacity=opacity; 
-            dataset.push(obj);    
-          }    
-          return dataset;      
-        };
-    
-     function circleAnimation(){
-       var dataset=circlegenerator();
-       if (bgwidth<768){
-        var w = 200;
-        var h = 200;
-       }else{
-        var w=600;
-        var h=600;
-       }       
-       var centerX = w/2;
-       var centerY = h/2; 
-       var svg = d3.select("#circleAnimation")
-            .append("svg")
-            .attr("width", w)   
-            .attr("height", h)
-
-        if (bgwidth<768){
-             var bgcircle = svg.append("circle")
-                        .attr("cx", 100)
-                        .attr("cy", 100)
-                        .attr("r", 50)
-                        .attr("opacity",0.9)
-                        .style("fill","white")
-        }else{
-             var bgcircle = svg.append("circle")
-                        .attr("cx", 280)
-                        .attr("cy", 280)
-                        .attr("r", 200)
-                        .attr("opacity",0.9)
-                        .style("fill","white")           
-        }      
-   
-         var circles = svg.selectAll("circle")
-                 .data(dataset)
-                 .enter()
-                 .append("circle")
-
-                 
-         circles.attr("cx", function(d,i) {
-            return (centerX + 200*Math.cos(d.angle));
-         })
-         .attr("cy", function(d,i) {
-          return (centerY + 200*Math.sin(d.angle)) ;
-        })
-         .attr("r",function(d,i){
-          return d.r;
-        })
-         .style("fill",function(d,i){
-          return d.color;
-        })
-         .style("opacity",function(d,i){
-          return d.opacity;
-        });
-
-        d3.select("#circleAnimation").select("svg")
-        .append("text")
-        .text("Data")
-        .attr("x",250)
-        .attr("y",250)
-        .style("text-anchor", "middle")
-        .style("font-size","65px")
-        .style("font-family",'Georgia')
-
-      d3.select("#circleAnimation").select("svg")
-        .append("text")
-        .text("Visual")
-        .attr("x",350)
-        .attr("y",350)
-        .style("text-anchor", "middle")
-        .style("font-size","65px")
-        .style("font-family",'Georgia')
-
-
-   //circles animation
-    circles.transition()
-     .delay(500)
-     .duration(1500)
-     .attr("cx",function(d,i){
-           return (centerX + d.bcr*Math.cos(d.angle));
-        })
-     .attr("cy",function(d,i) {
-            return (centerY + d.bcr*Math.sin(d.angle)) ;
-        })
-     .ease("elastic");
-    };
-  
-    //execute function 
-      //$( document ).ready(function() {
-       // circlegenerator();      
-        //circleAnimation();
-      //}); 
-   $(function() {
+  $(function(){ 
      $( window ).resize(function() {
-   	   layout();
+       layout();
      });    
-     layout();
+      layout();
+     scrolling();
      circlegenerator();      
      circleAnimation();
-     //logo();
-   });
-
-   
-  function scrolling(){
-   var $animation_elements = $('.animation-element');
-    var $window = $(window);
-
-    function check_if_in_view() {
-     var window_height = $window.height();
-     var window_top_position = $window.scrollTop();
-     var window_bottom_position = (window_top_position + window_height);
- 
-      $.each($animation_elements, function() {
-        var $element = $(this);
-        var element_height = $element.outerHeight();
-        var element_top_position = $element.offset().top;
-        var element_bottom_position = (element_top_position + element_height);
-
-    //check to see if this current container is within viewport
-      if ((element_bottom_position >= window_top_position) &&
-        (element_top_position <= window_bottom_position)) {
-        $element.addClass('in-view');
-      } else {
-       $element.removeClass('in-view');
-      }
-      });
-    }
-
-  $window.on('scroll resize', check_if_in_view);
-  $window.trigger('scroll');
-  }; 
-
-  scrolling();
-
-  $(function(){ 
      legend();//d3 legend,use library to make legend
      viewingbubble(hardcode_viewingbubble_json_onemonth,hardcode_viewingbubble_jsonvalue_onemonth);//d3,get data from data.js(hardcode_viewingbubble_json;hardcode_viewingbubble_jsonvalue )
      barlinechart01(hardcode_pie_barline_data_onemonth);//d3,get data from data.js(hardcode_pie_barline_data)  
@@ -632,10 +261,7 @@
      highchart_barline(); //highchart_barline,get data from data.js(hardcode_viewing,hardcode_cpm,var arr=barlinechart();)
      highchart_bubble();//bubblecharts,get data from sample.json  
      viewing_clickbutton();
-     //scrolling();
   });
-
-
   </script>
 </body>
 </html>
