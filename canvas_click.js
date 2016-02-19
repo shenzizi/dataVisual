@@ -283,7 +283,7 @@ function draw_result (packer,data)
   function draw_circle(circle)
   {   
     var circlesgobj={}; 
-        ctx.font = "bold 15px Arial";
+        ctx.font = "bold 15px Microsoft JhengHei";
         //ctx.globalAlpha=0.5;
         ctx.beginPath();
         ctx.arc((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my, circle.r*zoom, 0, 2*Math.PI); 
