@@ -27,9 +27,32 @@ var width = 150,
       d3.selectAll(".cell").select("text")
         .style("fill","white")
 }; 
+function viewing_clickbutton(){
+  $("#oneweek").click(function(){
+      viewingbubble(hardcode_viewingbubble_json_oneweek,hardcode_viewingbubble_jsonvalue_oneweek)
+      piechart(hardcode_pie_barline_data_oneweek)
+      barlinechart01(hardcode_pie_barline_data_oneweek)
+      barchartwn(hardcode_bardata_oneweek)
+  })
+  $("#onemonth").click(function(){
+    viewingbubble(hardcode_viewingbubble_json_onemonth,hardcode_viewingbubble_jsonvalue_onemonth)
+    piechart(hardcode_pie_barline_data_onemonth)
+    barlinechart01(hardcode_pie_barline_data_onemonth)
+    barchartwn(hardcode_bardata_onemonth)
+  })
+  $("#oneyear").click(function(){
+    viewingbubble(hardcode_viewingbubble_json_oneyear,hardcode_viewingbubble_jsonvalue_oneyear)
+    piechart(hardcode_pie_barline_data_oneyear)  
+    barlinechart01(hardcode_pie_barline_data_oneyear)
+    barchartwn(hardcode_bardata_oneyear)
+  })
+}
+
+
 //chart01_viewingbubble
-function viewingbubble(){
+function viewingbubble(dataname1,dataname2){
   // Fake JSON data for viewingbubble,read from data.js
+  d3.select("#viewingbubble").select("svg").remove();
   var width = 550,
       height= 550
   var color = d3.scale.ordinal()
@@ -49,7 +72,7 @@ function viewingbubble(){
         .padding(3);
   
   // generate data with calculated layout values
-  var nodes = bubble.nodes(processData(hardcode_viewingbubble_json))
+  var nodes = bubble.nodes(processData(dataname1))
             .filter(function(d) { return !d.children; }); // filter out the outer bubble
  
   var vis = svg.selectAll('circle')
@@ -66,7 +89,7 @@ function viewingbubble(){
   //need to be revised
   vis.append("text")
      .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-     .data(hardcode_viewingbubble_jsonvalue)
+     .data(dataname2)
      .text(function(d,i){return d})
      //.style("text-anchor", "end") 
 
@@ -90,8 +113,12 @@ function viewingbubble(){
 //chart02__piechart--retrieve data from ajax request
 function piechart(dataset){
 d3.select("#piechart").select("svg").remove()
-if (dataset=="hardcode_pie_barline_data"){
-  var data=hardcode_pie_barline_data
+if (dataset=="hardcode_pie_barline_data_oneweek"){
+  var data=hardcode_pie_barline_data_oneweek
+}else if(dataset=="hardcode_pie_barline_data_onemonth"){
+  var data=hardcode_pie_barline_data_onemonth
+}else{
+  var data=hardcode_pie_barline_data_oneyear
 }
 var data=dataset
 var width = 360,
@@ -144,10 +171,11 @@ function type(d) {
 };
 
 //chart03__adcost&cpm
-function barlinechart01(){
-var data=hardcode_pie_barline_data
-var margin = {top: 20, right: 50, bottom: 30, left: 50},
-    width = 420 - margin.left - margin.right,
+function barlinechart01(data){
+d3.select("#barlinechart01").select("svg").remove(); 
+var data=data
+var margin = {top: 20, right: 50, bottom: 30, left: 60},
+    width = 40 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -158,7 +186,8 @@ var y1 = d3.scale.linear().range([height, 0]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+
 
 var yAxisLeft = d3.svg.axis()
     .scale(y0)
@@ -192,12 +221,14 @@ var svg = d3.select("#barlinechart01")
 
   var xlabels=svg.append("g")
       .attr("class", "x axis")
+      .style("fill","white") 
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
   xlabels.selectAll("text").remove();
 
   svg.append("g") 
-     .attr("class", "y axis") 
+     .attr("class", "y axis")
+     .style("fill","white") 
      .call(yAxisLeft) 
      .append("text")
      .attr("transform", "rotate(-90)") 
@@ -207,7 +238,8 @@ var svg = d3.select("#barlinechart01")
      .text("10秒廣告價");
 
 svg.append("g") 
-     .attr("class", "y axis") 
+     .attr("class", "y axis")
+    .style("fill","white")  
      .attr("transform", "translate("+width+",0)")
      .call(yAxisRight) 
      .append("text") 
@@ -251,12 +283,16 @@ function type(d) {
 //chart04__bar chart with negative values--retrieve data from ajax request
 function barchartwn(pndataset){
 d3.select("#nbar").select("svg").remove();
-if (pndataset=="hardcode_bardata"){
-  var bardata=hardcode_bardata
+if (pndataset=="hardcode_bardata_oneweek"){
+  var bardata=hardcode_bardata_oneweek
+}else if (pndataset=="hardcode_bardata_onemonth"){
+  var bardata=hardcode_bardata_onemonth
+}else{
+  var bardata=hardcode_bardata_oneyear
 }
 var bardata=pndataset;
 
-var margin = {top: 30, right: 10, bottom: 10, left: 10},
+var margin = {top: 30, right: 20, bottom: 10, left: 50},
     width = 360 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -297,11 +333,14 @@ svg.selectAll(".bar")
 
   svg.append("g")
       .attr("class", "x axis")
+      .style("fill","white")  
       .call(xAxis);
 
   svg.append("g")
       .attr("class", "y axis")
+      .style("fill","white")  
     .append("line")
+      .style("fill","white")  
       .attr("x1", x(0))
       .attr("x2", x(0))
       .attr("y2", height);
@@ -354,19 +393,20 @@ function type(d) {
     }, hardcode_cpm)
     .render();
 
-    var div = d3.select("#heatmapcircle").append("div")   
+    var div = d3.select("#chart").append("div")   
     .attr("class", "tooltip")               
     .style("opacity", 0);
     
-     d3.select("#heatmapcircle").select("svg").selectAll("path") 
+     d3.select("#chart").selectAll("path") 
         .data(tooltip)     
-        .on("mouseover", function(d,i) {    
+        .on("mouseover", function(d,i) {  
             div.transition()    
                 .duration(200)    
                 .style("opacity", .9);    
             div .html("<b>date:" + d.date +"</b><br><b>收視率:" + d.value+"</b>")
                 .style("left", (d3.event.pageX) + "px")   
-                .style("top", (d3.event.pageY - 28) + "px"); 
+                .style("top", (d3.event.pageY - 28) + "px");
+                console.log(d3.event.pageX,d3.event.pageY) 
             })          
         .on("mouseout", function(d) {   
             div.transition()    
@@ -391,9 +431,10 @@ function type(d) {
 
   svg.append("g")
      .attr("class", "legendLinear")
-     .attr("transform", "translate(20,20)")
+     .attr("transform", "translate(20,30)")
      .append("text")
      .text("收視率")
+     .attr("y",-10)
 
   var legendLinear = d3.legend.color()
     .shapeWidth(30)
@@ -413,9 +454,11 @@ function type(d) {
 
     svg.append("g")
      .attr("class", "legendLinear")
-     .attr("transform", "translate(20,20)")
+     .attr("transform", "translate(30,30)")
      .append("text")
      .text("C.P.M")
+     .attr("y",-10)
+
 
     var legendLinear = d3.legend.color()
     .shapeWidth(30)

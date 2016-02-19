@@ -1,9 +1,18 @@
-var hardcode_viewingbubble_json = {"viewing": {"新台灣加油": 0.55, "正晶限時批": 0.36, "新聞面對面": 0.49, "新聞龍捲風": 0.58, "少康戰情室": 0.4, "新聞深喉嚨": 0.66}}, 
-    hardcode_viewingbubble_jsonvalue=[0.55,0.36,0.49,0.58,0.4,0.6]
+var hardcode_viewingbubble_json_oneweek = {"viewing": {"新台灣加油": 0.55, "正晶限時批": 0.36, "新聞面對面": 0.49, "新聞龍捲風": 0.58, "少康戰情室": 0.4, "新聞深喉嚨": 0.66}}, 
+    hardcode_viewingbubble_jsonvalue_oneweek=[0.55,0.36,0.49,0.58,0.4,0.6]
+var hardcode_viewingbubble_json_onemonth = {"viewing": {"新台灣加油": 0.63, "正晶限時批": 0.6, "新聞面對面": 0.39, "新聞龍捲風": 0.4, "少康戰情室": 0.25, "新聞深喉嚨": 0.7}}, 
+    hardcode_viewingbubble_jsonvalue_onemonth=[0.63,0.6,0.39,0.4,0.25,0.7]
+    var hardcode_viewingbubble_json_oneyear = {"viewing": {"新台灣加油": 0.62, "正晶限時批": 0.47, "新聞面對面": 0.32, "新聞龍捲風": 0.5, "少康戰情室": 0.29, "新聞深喉嚨": 0.67}}, 
+    hardcode_viewingbubble_jsonvalue_oneyear=[0.62,0.47,0.32,0.5,0.29,0.67]
 
-var hardcode_pie_barline_data=[{name:"新台灣加油",response:100,adcost:25000,cpm:450},{name:"正晶限時批",response:20,adcost:35000,cpm:400},{name:"新聞面對面",response:50,adcost:20000,cpm:450},{name:"新聞龍捲風",response:6,adcost:15000,cpm:250},{name:"少康戰情室",response:10,adcost:15000,cpm:550},{name:"新聞深喉嚨",response:10,adcost:37000,cpm:370}]; 
+var hardcode_pie_barline_data_oneweek=[{name:"新台灣加油",response:100,adcost:25000,cpm:450},{name:"正晶限時批",response:20,adcost:35000,cpm:400},{name:"新聞面對面",response:50,adcost:20000,cpm:450},{name:"新聞龍捲風",response:6,adcost:15000,cpm:250},{name:"少康戰情室",response:10,adcost:15000,cpm:550},{name:"新聞深喉嚨",response:10,adcost:37000,cpm:370}]; 
+var hardcode_pie_barline_data_onemonth=[{name:"新台灣加油",response:150,adcost:28000,cpm:475},{name:"正晶限時批",response:40,adcost:32000,cpm:380},{name:"新聞面對面",response:50,adcost:20000,cpm:420},{name:"新聞龍捲風",response:8,adcost:20000,cpm:280},{name:"少康戰情室",response:12,adcost:15000,cpm:650},{name:"新聞深喉嚨",response:20,adcost:33000,cpm:350}]; 
+var hardcode_pie_barline_data_oneyear=[{name:"新台灣加油",response:180,adcost:26000,cpm:400},{name:"正晶限時批",response:75,adcost:31000,cpm:400},{name:"新聞面對面",response:55,adcost:22000,cpm:400},{name:"新聞龍捲風",response:16,adcost:22000,cpm:230},{name:"少康戰情室",response:14,adcost:25000,cpm:670},{name:"新聞深喉嚨",response:35,adcost:28000,cpm:320}]; 
 
-var hardcode_bardata=[{name:"新台灣加油",pnvalue:50},{name:"正晶限時批",pnvalue:20},{name:"新聞面對面",pnvalue:15},{name:"新聞龍捲風",pnvalue:5},{name:"少康戰情室",pnvalue:2},{name:"新聞深喉嚨",pnvalue:3},{name:"新台灣加油",pnvalue:-20},{name:"正晶限時批",pnvalue:-2},{name:"新聞面對面",pnvalue:-6},{name:"新聞龍捲風",pnvalue:-5},{name:"少康戰情室",pnvalue:-4},{name:"新聞深喉嚨",pnvalue:0}]; 
+
+var hardcode_bardata_oneweek=[{name:"新台灣加油",pnvalue:50},{name:"正晶限時批",pnvalue:20},{name:"新聞面對面",pnvalue:15},{name:"新聞龍捲風",pnvalue:5},{name:"少康戰情室",pnvalue:2},{name:"新聞深喉嚨",pnvalue:3},{name:"新台灣加油",pnvalue:-20},{name:"正晶限時批",pnvalue:-2},{name:"新聞面對面",pnvalue:-6},{name:"新聞龍捲風",pnvalue:-5},{name:"少康戰情室",pnvalue:-4},{name:"新聞深喉嚨",pnvalue:0}]; 
+var hardcode_bardata_onemonth=[{name:"新台灣加油",pnvalue:80},{name:"正晶限時批",pnvalue:50},{name:"新聞面對面",pnvalue:25},{name:"新聞龍捲風",pnvalue:25},{name:"少康戰情室",pnvalue:6},{name:"新聞深喉嚨",pnvalue:4},{name:"新台灣加油",pnvalue:-40},{name:"正晶限時批",pnvalue:-10},{name:"新聞面對面",pnvalue:-6},{name:"新聞龍捲風",pnvalue:-10},{name:"少康戰情室",pnvalue:-8},{name:"新聞深喉嚨",pnvalue:-2}]; 
+var hardcode_bardata_oneyear=[{name:"新台灣加油",pnvalue:120},{name:"正晶限時批",pnvalue:40},{name:"新聞面對面",pnvalue:35},{name:"新聞龍捲風",pnvalue:55},{name:"少康戰情室",pnvalue:9},{name:"新聞深喉嚨",pnvalue:9},{name:"新台灣加油",pnvalue:-48},{name:"正晶限時批",pnvalue:-42},{name:"新聞面對面",pnvalue:-12},{name:"新聞龍捲風",pnvalue:-25},{name:"少康戰情室",pnvalue:-14},{name:"新聞深喉嚨",pnvalue:-10}]; 
 
 var hardcode_layout_data = [
     { "len": 4, "color": "#8dd3c7", "label": "新聞面對面", "id": "新聞面對面"},

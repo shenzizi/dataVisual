@@ -283,14 +283,14 @@ function draw_result (packer,data)
   function draw_circle(circle)
   {   
     var circlesgobj={}; 
-    ctx.font = "10px Arial";
+        ctx.font = "bold 15px Arial";
         //ctx.globalAlpha=0.5;
         ctx.beginPath();
         ctx.arc((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my, circle.r*zoom, 0, 2*Math.PI); 
         xyposition.push((circle.c.x+dx)*zoom+mx, (circle.c.y+dy)*zoom+my);      
         ctx.fillStyle=fillcolor[i];  
         ctx.fill();
-        ctx.fillStyle="black";
+        //ctx.fillStyle="black";
         circlesgobj.left=(circle.c.x+dx)*zoom+mx- circle.r*zoom;
         circlesgobj.right=(circle.c.x+dx)*zoom+mx+ circle.r*zoom;
         circlesgobj.top=(circle.c.y+dy)*zoom+my- circle.r*zoom;
@@ -328,11 +328,11 @@ function draw_result (packer,data)
         //draw_circle (packer.bounds[i]);/*cancel the border width
         
     // draw rectangle
-    ctx.strokeStyle = '#530890';
+    /*ctx.strokeStyle = '#530890';
     ctx.beginPath();
     ctx.rect((-packer.w/2+dx)*zoom+mx, (-packer.h/2+dy)*zoom+my, packer.w*zoom, packer.h*zoom);
     ctx.closePath();
-    ctx.stroke();
+    ctx.stroke();*/
 
 
    function mapping_r_name(data){
@@ -391,9 +391,11 @@ function draw_result (packer,data)
       var datanamei = name_order[i].split(' ')
       for (var j = 0; j<datanamei.length; j++){
         if (circlesg[i].r<80 && datanamei.length>2){
-          ctx.fillText(datanamei[j],topleftposition[i*2],topleftposition[i*2+1]+(j*15))
+          ctx.fillStyle = "floralwhite";
+          ctx.fillText(datanamei[j],topleftposition[i*2],topleftposition[i*2+1]+(j*20))
         }else{
-          ctx.fillText(datanamei[j],xyposition[i*2],xyposition[i*2+1]+(j*15))
+          ctx.fillStyle = "floralwhite";
+          ctx.fillText(datanamei[j],xyposition[i*2],xyposition[i*2+1]+(j*20))
         }
       }
     }

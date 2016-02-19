@@ -6,9 +6,7 @@
 	<title>Data Visual</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="fontstyle.css" />
-
    <!--<link rel='stylesheet' type="text/css" href='style.css' />-->
-  <!--<link rel="stylesheet/less" type="text/css" href="style.less">-->
   <style>
   #bg{
       position: absolute;
@@ -18,9 +16,16 @@
       position: absolute;
       z-index: 2;
     }
-  #part1{
+  #part1,#part3{
     background-color: black;
   }
+  #part3 > .row > .intro{
+   background-color:indigo;
+  }
+  #part2 > .row > .intro{
+   background-color:#3c6a72;
+  }
+
   /*#part1::before, #part2::before,#part3::before,#part4::before{
     display: block;
     content: "";
@@ -44,6 +49,9 @@
     background-color: lavender;
     border:black;
   }
+  #part2,#part3,#part4{
+    margin-top: 65px;
+  }
   .pagepart{
     position: absolute;
     width:100%;
@@ -53,31 +61,6 @@
     background-color: grey;
     height:200px;
   }
-  .wrapper {
-  position: relative;
-  width: 100%; /* <-- just a default, can be anything. */
-}
-
-.three-by-two.aspect-ratio { padding-bottom: 66.666% }
-.four-by-three.aspect-ratio { padding-bottom: 75% }
-.sixteen-by-nine.aspect-ratio { padding-bottom: 56.25% }
-
-.content {
-    position: absolute;
-    top: 0;  bottom: 0;  left: 0;  right: 0;
-  padding: 0 24px; /* Optional padding for content area */
-}
-
-.main-box {
-    width: 100%;
-    /*margin: 5% auto;*/
-    margin-top: 5%;
-}
-
-/* Styles for the content in the main box */
-.main-box > .content {
-    background: #ffe5e5;
-}
   div.tooltip {   
     position: absolute;           
     text-align: center;           
@@ -93,17 +76,21 @@
   text{
     font-weight: bold;
   }
-  h2{
+  h3{
     text-align: center;
     font-size:1.5em;
-    font-weight:bold;
-    color:#0e3e17;
+    color:white;
     font-family: 'cwTeXMing', serif;
     font-family: Georgia, Times, 'Times New Roman', serif;
 
   }
-  h3{
-     font-family: Georgia, Times, 'Times New Roman', serif;
+  h2{
+    font-family: 'cwTeXMing', serif;
+    color:white;
+  }
+  h1{
+    color:white;
+    font-weight: bold;
   }
   /*#heatmapcircle{
     margin-top: 1200px;
@@ -155,7 +142,7 @@
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke:white;
   shape-rendering: crispEdges;
 }
 
@@ -196,27 +183,15 @@
   left:850px;
   text-align: center;
 }*/
-
-#viewingtext{
+.choosedate{
+  padding:10px
+}
+/*#viewingtext{
   position: absolute;
   top:-15px;
   left:20px;
-}
-#daterange-btn{
-  position: absolute;
-  top:3px;
-  left:600px;
-  width:215px;
-}
-#btn-search{
-  position: absolute;
-  top:3px;
-  left:830px;
-}
-.bootstrap-tagsinput{
-  position: absolute;
-  top:3px !important;
-}
+}*/
+
 .animation-element.slide-left {
   opacity: 0;
   -moz-transition: all 500ms linear;
@@ -237,6 +212,25 @@
   -ms-transform: translate(0px, 0px);
   transform: translate3d(0px, 0px, 0px);
 }
+.intro{
+  padding-top: 50px;
+  padding-left:5%;
+}
+.topb{
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.navbar-fixed-top{
+  height:70px;
+}
+.navbar-brand,.nav li{
+  font-size: 20px;
+  padding-top: 5px;
+}
+.navbar-brand{
+  padding-top: 20px;
+}
 
   </style>
 </head>
@@ -252,21 +246,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-  <!--<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#part1">HOTWORD</a></li>
-      <li><a href="#part2">VIEWING</a></li>
-      <li><a href="#part3">TABLES</a></li>
-    </ul>
-  </div>
-</nav>-->
-
-<nav class="nav navbar-inverse">
+<nav class="nav navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -278,10 +258,11 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a data-toggle="tab" href="#home">Home</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Page 1</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Page 2</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Page 3</a></li>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#viewing">政論收視率</a></li>
+                    <li><a href="#viewing2">政論收視率貳</a></li>
+                    <li><a href="#hotword">熱門關鍵字</a></li>
+                    <li><a href="#viewing_all">節目收視率</a></li>
                 </ul>
             </div>
         </div>
@@ -291,22 +272,23 @@
     <div class="row">
       <div class="col-md-12">
         <img id="bg" src="#"/>
-        <div id="circleAnimation"><h2>看圖說故事</h2></div>
+        <div id="circleAnimation"><h2></h2></div>
       </div>
     </div>
   </div>
 
  
 
- <section id="hotword">
+ <section id="viewing">
   <div class='container-fluid' id="part1" style="margin-top:1000px">
     <div class="row">
-      <div class="col-md-12 col-xs-12 intro">
-        <h1 style="color:white">VIEWING,INTRO</h1>
-        <p>關於收視率</p>
-        <p>資料來源:潤利</p>
-        <p>關於收視率</p>
-        <p>資料來源:潤利</p>
+      <div class="col-md-12 col-xs-12 intro animation-element slide-left" style="background-color:maroon">
+        <h1>紅●政論</h1>
+        <h2>想知道現在最夯的政論節目是哪些嗎?</h2>
+        <h2>快來看看政論聲量多大,廣告價衝多高</h2>
+        <p style="color:white">請點選日期,一覽過去一周,一個月,一年榮登收視率前120名的政論節目</p>
+        <p style="color:white">收視率,10秒廣告價,C.P.M從潤利公司網站蒐集得來,聲量百分筆與聲量正負評筆數從搜尋引擎得來</p>
+        <p style="color:white"><a a target="_blank" href="http://www1.xkm.com.tw/HTML/tw/hr/ht_top.asp">資料來源</a></p>
       </div>
     </div>
     <div class="row">
@@ -314,57 +296,52 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">選擇日期
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
-              <li><a href="#">過去一周</a></li>
-              <li><a href="#">過去一個月</a></li>
-              <li><a href="#">過去一年</a></li>
+          <ul class="dropdown-menu choosedate">
+              <li id="oneweek"><a href="#1">過去一周</a></li>
+              <li id="onemonth"><a href="#1">過去一個月</a></li>
+              <li id="oneyear"><a href="#1">過去一年</a></li>
           </ul>
         </div>
-        <div class="col-md-1 col-xs-12" id="legend"></div>
-        <div class="col-md-8 col-xs-12" id="viewingbubble" style="border:1px solid green;"><h2 id="viewingtext">潤利收視率(%)</h2></div>
+        <!--<div class="col-md-1 col-xs-12" id="legend"></div>-->
+        <div class="col-md-8 col-xs-12" style="border:1px solid green;">
+          <div class="col-md-2 col-xs-12" id="legend"></div>
+          <div class="col-md-6 col-xs-12" style="border:1px solid green;">
+            <h3 id="viewingtext">潤利收視率(%)</h3>
+            <div style="border:1px solid green;" id="viewingbubble"></div>
+          </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-xs-12" id="barlinechart01" style="border:1px solid orange"><h2>10秒收視率與C.P.M</h2></div>
-        <div class="col-md-4 col-xs-12" id="piechart" style="border:1px solid orange"><h2>聲量%(回饋熱度(%))</h2></div>
-        <div class="col-md-4 col-xs-12" id="nbar" style="border:1px solid orange"><h2>聲量正負評筆數</h2></div>
+        <div class="col-md-4 col-xs-12" id="barlinechart01" style="border:1px solid orange"><h3>10秒廣告價與C.P.M</h3></div>
+        <div class="col-md-4 col-xs-12" id="piechart" style="border:1px solid orange"><h3>聲量%</h3></div>
+        <div class="col-md-4 col-xs-12" id="nbar" style="border:1px solid orange"><h3>聲量正負評筆數</h3></div>
         <div class="clearfix"></div>
     </div>
   </div>
  </section>
  
- <section id="viewing">
-  <div class='container-fluid' id="part2" style="margin-top:50px">part2_viewing
-    <div class="row">
-      <div class="col-md-12">
-        <div id="intro_viewing">
-          <h1>intro_viewing</h1>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <button type="button" class="btn btn-primary" id="top10">TOP10</button>
-        <button type="button" class="btn btn-primary" id="top15">TOP15</button>
-        <button type="button" class="btn btn-primary" id="top20">TOP20</button>
-        <button type="button" class="btn btn-primary" id="top28">TOP28</button>
-      </div>
-      <div class="col-md-9">
-        <canvas id='canvas' width="1140" height="600" style="border:1px solid white;"></canvas>
-      </div>
-    </div>
-  </div>
- </section>
+ 
 
- <section id="funtable">
-  <div class='container-fluid' id="part3" style="margin-top:50px">part3_table
+ <section id="viewing2">
+  <div class='container-fluid' id="part2">
     <div class="row">
-       <div class="col-md-4" id="heatmapcircle">
-          <h2>收視率與C.P.M關係圖</h2>
+      <div class="col-md-12 intro animation-element slide-left">
+        <h1>政論●番外</h1>
+        <h2>政論收視率番外篇</h2>
+        <h2>收視率與C.P.M關係圖</h2>
+      </div>
+    </div>
+    <div class="row">
+       <div class="col-md-4">
+        <div class="col-md-2">          
           <div id="heatmaplegend"></div>
+        </div>
+        <div class="col-md-2">  
           <div id="heatmaplegend01"></div>
+        </div>
        </div>
-       <div class="col-md-8">
-          <svg id='chart' style='display: block; margin: auto;'></svg>     
+       <div class="col-md-8" style="border:1px solid orange">          
+          <svg id="chart" style='display: block; margin: auto;border:1px solid green'></svg>     
        </div>
      <div class="row">
       <div class="col-md-12">
@@ -375,8 +352,37 @@
   </div>
 </section>
 
-<section id="funtable">
-  <div class='container-fluid' id="part4" style="margin-top:50px">part3_table
+<section id="hotword">
+  <div class='container-fluid' id="part3">
+    <div class="row">
+      <div class="col-md-12 intro animation-element slide-left" id="intro_viewing">
+        <!--<div class=">-->
+          <h1>熱門●關鍵字</h1>
+          <h2>還在怕自己lag,沒跟上朋友的節奏嗎?</h2>
+          <h2>關鍵字一把抓,告訴你top10-top28熱門詞組</h2>
+        <!--</div-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+       <div>
+        <button type="button" class="btn btn-primary topb" id="top10">TOP10</button>
+        <button type="button" class="btn btn-primary topb" id="top15">TOP15</button>
+       </div>
+       <div>
+        <button type="button" class="btn btn-primary topb" id="top20">TOP20</button>
+        <button type="button" class="btn btn-primary topb" id="top28">TOP28</button>
+       </div>
+     </div>
+      <div class="col-md-9">
+        <canvas id='canvas' width="1140" height="600"></canvas>
+      </div>
+    </div>
+  </div>
+ </section>
+
+<section id="viewing_all">
+  <div class='container-fluid' id="part4" id="viewing_all">part3_table
     <div class="row">
        <div class="col-md-12">
          <div id="bubblechart" style="min-width: 310px; height: 500px;"></div>
@@ -444,7 +450,10 @@
    	}
    	$('#bg').css('width',bgwidth);
    	$('#bg').css('height',bgheight);
-    $('#part1').css('margin-top',bgheight+50)
+    $('#part1').css('margin-top',bgheight+70)
+    if (bgwidth>767){
+      $(".navbar-inverse").addClass("navbar-fixed-top")
+    }
     //$('#part2').css('margin-top',bgheight+part1height+50)
     //$('#part3').css('margin-top',bgheight*3)
     //$('#part1').css('height',bgheight);
@@ -495,24 +504,23 @@
             .append("svg")
             .attr("width", w)   
             .attr("height", h)
-            //.attr("id","mypic")
 
-       var bgcircle = svg.append("circle")
-                        .attr("cx", 250)
-                        .attr("cy", 250)
+        if (bgwidth<768){
+             var bgcircle = svg.append("circle")
+                        .attr("cx", 100)
+                        .attr("cy", 100)
+                        .attr("r", 50)
+                        .attr("opacity",0.9)
+                        .style("fill","white")
+        }else{
+             var bgcircle = svg.append("circle")
+                        .attr("cx", 280)
+                        .attr("cy", 280)
                         .attr("r", 200)
                         .attr("opacity",0.9)
-                        .style("fill","white")      
+                        .style("fill","white")           
+        }      
    
-       /*var mypic=svg.selectAll("image").data([0]);
-                 mypic.enter()
-                .append("svg:image")
-               // .attr("xlink:href", "{% static "mypic01.png" %}")
-                .attr("x", "100")
-                .attr("y", "110")
-                .attr("width", "400")
-                .attr("height", "400");*/
-
          var circles = svg.selectAll("circle")
                  .data(dataset)
                  .enter()
@@ -520,10 +528,10 @@
 
                  
          circles.attr("cx", function(d,i) {
-            return (centerX + 180*Math.cos(d.angle));
+            return (centerX + 200*Math.cos(d.angle));
          })
          .attr("cy", function(d,i) {
-          return (centerY + 180*Math.sin(d.angle)) ;
+          return (centerY + 200*Math.sin(d.angle)) ;
         })
          .attr("r",function(d,i){
           return d.r;
@@ -539,7 +547,7 @@
         .append("text")
         .text("Data")
         .attr("x",250)
-        .attr("y",300)
+        .attr("y",250)
         .style("text-anchor", "middle")
         .style("font-size","65px")
         .style("font-family",'Georgia')
@@ -547,8 +555,8 @@
       d3.select("#circleAnimation").select("svg")
         .append("text")
         .text("Visual")
-        .attr("x",450)
-        .attr("y",400)
+        .attr("x",350)
+        .attr("y",350)
         .style("text-anchor", "middle")
         .style("font-size","65px")
         .style("font-family",'Georgia')
@@ -616,13 +624,15 @@
 
   $(function(){ 
      legend();//d3 legend,use library to make legend
-     viewingbubble();//d3,get data from data.js(hardcode_viewingbubble_json;hardcode_viewingbubble_jsonvalue )
-     barlinechart01();//d3,get data from data.js(hardcode_pie_barline_data)  
-     piechart(hardcode_pie_barline_data);//default(data.js;hardcode_pie_barline_data)
-     barchartwn(hardcode_bardata);//default(data.js;hardcode_bardata)
+     viewingbubble(hardcode_viewingbubble_json_onemonth,hardcode_viewingbubble_jsonvalue_onemonth);//d3,get data from data.js(hardcode_viewingbubble_json;hardcode_viewingbubble_jsonvalue )
+     barlinechart01(hardcode_pie_barline_data_onemonth);//d3,get data from data.js(hardcode_pie_barline_data)  
+     piechart(hardcode_pie_barline_data_onemonth);//default(data.js;hardcode_pie_barline_data)
+     barchartwn(hardcode_bardata_onemonth);//default(data.js;hardcode_bardata)
      circosjs();//d3_circosjs,get data from data.js(hardcode_layout_data,hardcode_viewing,hardcode_cpm)
      highchart_barline(); //highchart_barline,get data from data.js(hardcode_viewing,hardcode_cpm,var arr=barlinechart();)
      highchart_bubble();//bubblecharts,get data from sample.json  
+     viewing_clickbutton();
+     //scrolling();
   });
 
 

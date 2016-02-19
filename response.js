@@ -53,7 +53,7 @@ var top10_data={
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "無恥 沒有 常識 判斷 能力",
+			"v": "無恥 沒有 常識 判斷",
 			"sco": 7,
 			"occs": 7
 		}]
@@ -115,7 +115,7 @@ var top15_data={
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "無恥 沒有 常識 判斷 能力",
+			"v": "無恥 沒有 常識 判斷",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -123,11 +123,11 @@ var top15_data={
 			"sco": 7,
 			"occs": 14
 		}, {
-			"v": "所謂 核工 博士 他們 大部分",
+			"v": "所謂 核工 他們 大部分",
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "博士 學位 沒有 常識 判斷 能力",
+			"v": "博士 學位 沒有 常識",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -197,7 +197,7 @@ var top20_data={
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "無恥 沒有 常識 判斷 能力",
+			"v": "無恥 沒有 常識 判斷",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -205,11 +205,11 @@ var top20_data={
 			"sco": 7,
 			"occs": 14
 		}, {
-			"v": "所謂 核工 博士 他們 大部分",
+			"v": "所謂 核工 他們 大部分",
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "博士 學位 沒有 常識 判斷 能力",
+			"v": "博士 學位 沒有 常識",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -225,7 +225,7 @@ var top20_data={
 			"sco": 5,
 			"occs": 9
 		}, {
-			"v": "幫助 中國 共產黨 包括 洩漏",
+			"v": "幫助 中國 共產黨",
 			"sco": 4,
 			"occs": 4
 		}, {
@@ -299,7 +299,7 @@ var top28_data={
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "無恥 沒有 常識 判斷 能力",
+			"v": "無恥 沒有 常識 判斷",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -307,11 +307,11 @@ var top28_data={
 			"sco": 7,
 			"occs": 14
 		}, {
-			"v": "所謂 核工 博士 他們 大部分",
+			"v": "所謂 核工 他們 大部分",
 			"sco": 7,
 			"occs": 7
 		}, {
-			"v": "博士 學位 沒有 常識 判斷 能力",
+			"v": "博士 學位 沒有 常識",
 			"sco": 7,
 			"occs": 7
 		}, {
@@ -327,7 +327,7 @@ var top28_data={
 			"sco": 5,
 			"occs": 9
 		}, {
-			"v": "幫助 中國 共產黨 包括 洩漏",
+			"v": "幫助 中國 共產黨",
 			"sco": 4,
 			"occs": 4
 		}, {
@@ -343,11 +343,11 @@ var top28_data={
 			"sco": 3,
 			"occs": 3
 		}, {
-			"v": "國民黨 總統 副總統 候選人 朱立倫",
+			"v": "國民黨 候選人 朱立倫",
 			"sco": 3,
 			"occs": 3
 		}, {
-			"v": "Station arrest American Extort American USD",
+			"v": "Station arrest American",
 			"sco": 2,
 			"occs": 2
 		}, {
@@ -355,7 +355,7 @@ var top28_data={
 			"sco": 2,
 			"occs": 2
 		}, {
-			"v": "Taipei Train Station arrest American Extort",
+			"v": "Taipei Train Station",
 			"sco": 2,
 			"occs": 2
 		}, {
