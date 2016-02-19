@@ -61,7 +61,7 @@
     content: "";
     width: 5%;
     height: 5px;
-    content: url('circledec.png');
+    content: url('../img/circledec.png');
     margin-left:45%;
     margin-top:-135px;
   }
@@ -70,7 +70,7 @@
     content: "";
     width: 5%;
     height: 5px;
-    content: url('recdec.png');
+    content: url('../img/recdec.png');
     margin-left:45%;
     margin-top:-135px;
   }
