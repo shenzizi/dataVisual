@@ -1,3 +1,4 @@
+<!--{% load staticfiles %}-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,8 @@
 	<title>Data Visual</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/nicgirault/circosJS/master/dist/colorBrewer.css">
-  <link rel="stylesheet" type="text/css" href="css/datavisual.css" />
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'css/datavisual.css' %}" />-->
+  <link rel="stylesheet" type="text/css" href="css/datavisual.css">
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -131,7 +133,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div id="highchart_barline" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
+        <div id="highchart_barline" style="min-width: 300px; height: 400px; margin: 0 auto;margin-top:20px"></div>
       </div>
     </div>
   </div>
@@ -185,18 +187,18 @@
         </div>        
       </div>
     </div>
-    <div class="row">
+     <div class="row">
        <div class="col-md-12">
          <div id="bubblechart" style="min-width: 280px; height: 500px;"></div>
        </div>
     </div>
     <div class="row">
-       <div class="col-md-12">
-         <table class="table table-striped viewingtable" style="margin-top:30px">
+      <div class="col-md-12" id="viewingtable_col">
+         <table class="table table-striped viewingtable" style="min-width:280px;margin-top:30px">
             <thead>
               <tr>
-                <th>排名</th>
-                <th>頻道</th>
+                <th id="table_rank">排名</th>
+                <th id="table_channel">頻道</th>
                 <th>節目名稱</th>
                 <th>收視率(%)</th>
                 <th>網路聲量(%)</th>
@@ -220,11 +222,16 @@
     </div>
   </div>
 
-  <script src="js/datavisual.js" type="text/javascript"></script>
-  <script src="js/dv_response.js"></script>
-  <script src="js/dv_canvas.js"></script>
-  <script src="js/dv_data.js" type="text/javascript"></script>
-  <script src="js/dv_plots_charts.js" type="text/javascript"></script>
+  <!--<script src="{% static 'js/datavisual.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/dv_response.js' %}"></script>
+  <script src="{% static 'js/dv_canvas.js' %}"></script>
+  <script src="{% static 'js/dv_data.js' %}" type="text/javascript"></script>-->
+  <script src='js/dv_plots_charts.js' type="text/javascript"></script>
+  <script src='js/datavisual.js' type="text/javascript"></script>
+  <script src='js/dv_response.js'></script>
+  <script src='js/dv_canvas.js'></script>
+  <script src='js/dv_data.js' type="text/javascript"></script>
+  <script src='js/dv_plots_charts.js' type="text/javascript"></script>
 
   <script>
    var bgwidth=$(window).width(), 
@@ -234,10 +241,12 @@
    function layout(){
    	console.log(bgratio);  
    	if (bgratio<1){
-   		$('#bg').attr("src","img/datavisual_re_sm.jpg")
+      //$('#bg').attr("src","{% static 'img/datavisual_re_sm.jpg' %}")
+      $('#bg').attr("src","img/datavisual_re_sm.jpg")
    	}else{
-        $('#bg').attr("src","img/datavisual_re.jpg")
-   	}
+      //$('#bg').attr("src","{% static 'img/datavisual_re.jpg' %}")
+      $('#bg').attr("src","img/datavisual_re.jpg")
+    }
    	$('#bg').css('width',bgwidth);
    	$('#bg').css('height',bgheight);
     $('#part1').css('margin-top',bgheight+70)
@@ -257,7 +266,8 @@
      circlegenerator();      
      circleAnimation();
      legend();//d3 legend,use library to make legend
-     viewingbubble(hardcode_viewingbubble_json_onemonth,hardcode_viewingbubble_jsonvalue_onemonth);//d3,get data from data.js(hardcode_viewingbubble_json;hardcode_viewingbubble_jsonvalue )
+     viewingbubble(hardcode_viewingbubble_json_onemonth, 
+     hardcode_viewingbubble_jsonvalue_onemonth);//d3,get data from data.js(hardcode_viewingbubble_json;hardcode_viewingbubble_jsonvalue )
      barlinechart01(hardcode_pie_barline_data_onemonth);//d3,get data from data.js(hardcode_pie_barline_data)  
      piechart(hardcode_pie_barline_data_onemonth);//default(data.js;hardcode_pie_barline_data)
      barchartwn(hardcode_bardata_onemonth);//default(data.js;hardcode_bardata)
