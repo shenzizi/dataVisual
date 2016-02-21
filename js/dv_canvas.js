@@ -1,4 +1,4 @@
-// set the canvas width and height as its parent
+// set the width and height of canvas as its parent
 var c = $('#canvas');
       var ct = c.get(0).getContext('2d');
       var container = $(c).parent();
