@@ -315,11 +315,14 @@ if (bgwidth<768){
 var margin = {top: 20, right: 10, bottom: 30, left: 10},
     width = 280 - margin.left - margin.right,
     height = 280 - margin.top - margin.bottom;
-  }else{
-var margin = {top: 30, right: 20, bottom: 10, left: 50},
+  }else if (bgwidth>1200){
+    var margin = {top: 30, right: 20, bottom: 10, left: 50},
     width = 400 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
-
+  }else{
+    var margin = {top: 30, right: 20, bottom: 10, left: 50},
+    width = 350 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
   }
 
 var x = d3.scale.linear()
@@ -381,10 +384,11 @@ function type(d) {
 
   //d3 circosJS
   function circosjs(){
+    if (bgwidth>=768){
      var circos = new circosJS({
       container: '#chart',
-      width: 420,
-      height: 420,
+      width:420,
+      height:420
     });
  
   circos
@@ -418,6 +422,46 @@ function type(d) {
         //colorPaletteReverse: true
     }, hardcode_cpm)
     .render();
+  }else{
+     var circos = new circosJS({
+      container: '#chart',
+      width:280,
+      height:280
+    });
+ 
+  circos
+    .layout(
+        {
+            innerRadius: 110,
+            outerRadius: 140,
+            ticks: {display: false},
+            labels: {
+              position: 'center',
+              display: true,
+              size: 14,
+              color: '#000',
+              radialOffset: 15,
+            },
+        },
+        hardcode_layout_data
+    )
+    .heatmap('temperatures', {
+        innerRadius: 90,
+        outerRadius: 110,
+        logScale: false,
+        colorPalette: 'YlOrRd',
+        //colorPaletteReverse: true
+    }, hardcode_viewing)
+    .heatmap('days-off', {
+        innerRadius: 80,
+        outerRadius: 90,
+        logScale: false,
+        colorPalette: 'Blues',
+        //colorPaletteReverse: true
+    }, hardcode_cpm)
+    .render();
+  }
+
 
     var div = d3.select("#chart").append("div")   
     .attr("class", "tooltip")               
