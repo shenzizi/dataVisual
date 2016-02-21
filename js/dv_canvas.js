@@ -1,3 +1,10 @@
+// set the canvas width and height as its parent
+var c = $('#canvas');
+      var ct = c.get(0).getContext('2d');
+      var container = $(c).parent();
+      c.attr('width', $(container).width() )
+      c.attr('height', $(c).height() );
+
 function processdata_click(data){
   function processdata(){
    var dataset=[],dataname=[],radiuses=[]; 
@@ -19,9 +26,10 @@ function processdata_click(data){
       var name=processdata(data)[0],
       size=processdata(data)[1]
       window.onload = draw(name,size,data);
-      var c = $('#canvas');
+      /*var c = $('#canvas');
       var ct = c.get(0).getContext('2d');
-      var container = $(c).parent().parent().parent();//var container=$(divid)
+      var container = $(c).parent();
+      c.attr('width', $(container).width() );*/ //max width
       // handle the response evnet
       $(window).resize( function(){ 
         c.attr('width', $(container).width() ); //max width
