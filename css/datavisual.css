@@ -16,9 +16,16 @@
   p{
     font-size: 18px;
   }
+  .container-fluid{
+      padding-left: 15px; padding-right: 15px; margin-left: 0; margin-right: 0;
+    }
+    .container-fluid > .row{
+      padding-left: 0px; padding-right: 0px; margin-left: 0; margin-right: 0;
+    }
   #bg{
       position: absolute;
       z-index: 1;
+      margin-left:-15px;
     }
   #circleAnimation,#narrative,#narrative_text{
       position: absolute;
@@ -38,10 +45,14 @@
   }
   #part1,#part3{
     background-color: black;
+    padding:0px;
   }
   #part2,#part4{
     background-color: lavender;
-    border:black;
+    padding:0px;
+  }
+  #part2{
+    padding:0;
   }
   #part2,#part3,#part4{
     margin-top: 65px;
@@ -53,7 +64,6 @@
    background-color:#3c6a72;
   }  
   #part4 > .row > .intro{
-   /*background-color:#bf5d28;*/
    background-color:darkkhaki;
   }  
   #part1 >.row >.intro::before,#part3 >.row >.intro::before{
@@ -205,5 +215,17 @@ div.tooltip {
   }
   p{
     font-size: 15px;
+  }
+  #highchart-barline{
+    margin-top:20px
+  }
+  #part1 >.row >.intro::before,#part3 >.row >.intro::before{
+    margin-left: 33%;
+  }
+  #part2 >.row >.intro::before,#part4 >.row >.intro::before{
+    margin-left: 33%;
+  }
+  #narrative,#narrative-text{
+    display: none;
   }
 }
