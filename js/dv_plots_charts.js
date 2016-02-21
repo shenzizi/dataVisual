@@ -320,8 +320,8 @@ var margin = {top: 20, right: 10, bottom: 30, left: 10},
     width = 400 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
   }else{
-    var margin = {top: 30, right: 20, bottom: 10, left: 50},
-    width = 350 - margin.left - margin.right,
+    var margin = {top: 30, right: 10, bottom: 10, left: 50},
+    width = 300 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
   }
 
