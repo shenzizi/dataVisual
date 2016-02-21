@@ -121,7 +121,7 @@
 .label{
   font-size:1em;
 }
-div.tooltip {   
+ .tooltip {   
     position: absolute;           
     text-align: center;           
     width: 70px;                  
@@ -131,7 +131,8 @@ div.tooltip {
     background: lightsteelblue;   
     border: 0px;      
     border-radius: 8px;           
-    pointer-events: none;         
+    pointer-events: none; 
+    z-index: 100;        
   } 
   text{
     font-weight: bold;
@@ -217,7 +218,7 @@ div.tooltip {
     font-size: 15px;
   }
   #highchart-barline{
-    margin-top:20px
+    margin-top:20px;  
   }
   #part1 >.row >.intro::before,#part3 >.row >.intro::before{
     margin-left: 33%;
@@ -228,4 +229,12 @@ div.tooltip {
   #narrative,#narrative-text{
     display: none;
   }
+}
+@media (max-width:340px){
+  #viewingtable_col{
+    width:280px;
+  }
+  #table_rank,#table_channel{
+   display:none; 
+ } 
 }
