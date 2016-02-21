@@ -803,9 +803,15 @@ function type(d) {
 
   //table
       function plottable(){
-        $.each(resp.data,function(key,val){
-        $("tbody").append("<tr><td>"+val["排名"]+"</td><td>"+val["台別"]+"</td><td>"+val["節目名稱"]+"</td><td>"+val["收視率"]+"</td><td>"+val["網路聲量(%)"]+"</td><td>"+val["Positive"]+"</td><td>"+val["Negative"]+"</td><td>"+val["P/N"]+"</td></tr>"); 
-        })
+        if (bgwidth<340){
+          $.each(resp.data,function(key,val){
+            $("tbody").append("<tr><td>"+val["節目名稱"]+"</td><td>"+val["收視率"]+"</td><td>"+val["網路聲量(%)"]+"</td><td>"+val["Positive"]+"</td><td>"+val["Negative"]+"</td><td>"+val["P/N"]+"</td></tr>"); 
+          })
+        }else{
+           $.each(resp.data,function(key,val){
+            $("tbody").append("<tr><td>"+val["排名"]+"</td><td>"+val["台別"]+"</td><td>"+val["節目名稱"]+"</td><td>"+val["收視率"]+"</td><td>"+val["網路聲量(%)"]+"</td><td>"+val["Positive"]+"</td><td>"+val["Negative"]+"</td><td>"+val["P/N"]+"</td></tr>"); 
+           })
+        }; 
       }; 
     plottable();
   }); 
@@ -906,182 +912,5 @@ function retrieve_volumn_data(){
           console.log(dataset)
         })
     }    
-     function highchart_bubble(){
-          $.getJSON( "../static/sample.json", function(resp) {
-            $.each(resp.data,function(key,val){
-              var objmarker={}; 
-              abbreviation=["嫁妝娘家","甘味人生","戲說台灣","琅琊榜", "親家", "中視新聞", "戀愛鄰距離","民視晚聞","奔跑吧薔薇","台視晚間","哆啦Ａ夢","鹿鼎記","綜藝大熱門","６７點新聞","烏龍派出所","華視晚間", "航海王龐", "民視晚間", "型男大主廚", "花千骨幕"]
-              resp.data[key].x=resp.data[key]["收視率"];
-              resp.data[key].y=resp.data[key]["網路聲量(%)"];
-              var pn=resp.data[key]['P/N'];
-              resp.data[key].abb=abbreviation[key]; 
-      
-      // assign objradius.radius=3 to solve the problem of zero value in p/n 
-                if (pn==0){ 
-                  resp.data[key].z=0.5;                
-                }else{
-                  resp.data[key].z=pn;
-                }
-            });  
-             //console.log(resp.data); 
-             
-    //break points
-    Highcharts.wrap(Highcharts.Axis.prototype, 'getLinePath', function (proceed, lineWidth) {
-        var axis = this,
-            path = proceed.call(this, lineWidth),
-            x = path[1],
-            y = path[2];
 
-        Highcharts.each(this.breakArray || [], function (brk) {
-            if (axis.horiz) {
-                x = axis.toPixels(brk.from);
-                path.splice(3, 0,
-                    'L', x - 4, y, // stop
-                    'M', x - 9, y + 5, 'L', x + 1, y - 5, // left slanted line
-                    'M', x - 1, y + 5, 'L', x + 9, y - 5, // higher slanted line
-                    'M', x + 4, y
-                );
-            } else {
-                y = axis.toPixels(brk.from);
-                path.splice(3, 0,
-                    'L', x, y - 4, // stop
-                    'M', x + 5, y - 9, 'L', x - 5, y + 1, // lower slanted line
-                    'M', x + 5, y - 1, 'L', x - 5, y + 9, // higher slanted line
-                    'M', x, y + 4
-                );
-            }
-        });
-        return path;
-    });
-
-    /**
-     * On top of each column, draw a zigzag line where the axis break is.
-     */
-    function pointBreakColumn(e) {
-        var point = e.point,
-            brk = e.brk,
-            shapeArgs = point.shapeArgs,
-            x = shapeArgs.x,
-            y = this.translate(brk.from, 0, 1, 0, 1),
-            w = shapeArgs.width,
-            key = ['brk', brk.from, brk.to],
-            path = ['M', x, y, 'L', x + w * 0.25, y + 4, 'L', x + w * 0.75, y - 4, 'L', x + w, y];
-
-        if (!point[key]) {
-            point[key] = this.chart.renderer.path(path)
-                .attr({
-                    'stroke-width': 2,
-                    stroke: point.series.options.borderColor
-                })
-                .add(point.graphic.parentGroup);
-        } else {
-            point[key].attr({
-                d: path
-            });
-        }
-    }
-      //bubble chart
-         $('#bubblechart').highcharts({
-        chart: {
-            type: 'bubble',
-            plotBorderWidth: 1,
-            zoomType: 'xy'
-        },
-
-        title: {
-            text: '節目收視率與網路聲量關係圖'
-        },
-
-        xAxis: {
-            title: {
-                    enabled: true,
-                    text: '收視率(%)'
-                },
-            gridLineWidth: 1,
-            lineWidth:2,
-            tickInterval:0.25, 
-            breaks:[{
-              from:1.75,
-              to:4.25,
-              breakSize:0.05
-            }],
-             events: {
-                pointBreak: pointBreakColumn
-            }
-        },
-
-        yAxis: {
-            title: {
-                    enabled: true,
-                    text: '網路聲量(%)'
-                },
-            startOnTick: false,
-            endOnTick: false
-        },
-        legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -10,
-                y: 70,
-                floating: true,
-                backgroundColor: '#FFFFFF',
-                borderWidth: 1
-            },
-         tooltip: {
-            useHTML: true,
-            headerFormat: '<table>',
-            pointFormat: '<tr><th colspan="2"><h5>{point.節目名稱}</h5></th></tr>' +
-                '<tr><th>收視率:</th><td>{point.x}%</td></tr>' +
-                '<tr><th>聲量:</th><td>{point.y}%</td></tr>' +
-                '<tr><th>討論熱度:</th><td>{point.z}%</td></tr>',
-            footerFormat: '</table>',
-            followPointer: true
-        },
-
-        plotOptions: {
-            bubble: {
-                minSize:10,
-                maxSize:45, 
-                dataLabels: {
-                    enabled: true,
-                    //allowOverlap:true,
-                    style:{
-                        "textShadow": "0 0 0px"
-                    },
-                    format:"{point.abb}"     
-                }
-            },
-
-        },
-
-        series: [{
-            /*regression: true ,
-                regressionSettings: {
-                    type: 'linear',
-                    color:  'rgba(223, 83, 83, .9)'
-                },*/
-            name:"節目",
-            data: resp.data,
-             marker: {
-                color: 'rgba(69,114,167,0.5)',
-                fillColor: {
-                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
-                    stops: [
-                        [0, 'rgba(255,255,255,0.5)'],
-                        [1, 'rgba(69,114,167,0.5)']
-                    ]
-                }
-            }
-        }]
-
-    });
-//table
-      function plottable(){
-        $.each(resp.data,function(key,val){
-        $("tbody").append("<tr><td>"+val["排名"]+"</td><td>"+val["台別"]+"</td><td>"+val["節目名稱"]+"</td><td>"+val["收視率"]+"</td><td>"+val["網路聲量(%)"]+"</td><td>"+val["Positive"]+"</td><td>"+val["Negative"]+"</td><td>"+val["P/N"]+"</td></tr>"); 
-        })
-      }; 
-    plottable();
-  }); 
-};
+ 
